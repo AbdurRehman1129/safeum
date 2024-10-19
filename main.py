@@ -34,7 +34,7 @@ accounts = []
 def work():
     global failed, success, retry
     username = choice('qwertyuiooasdfghjklzxcvpbnm') + ''.join(choices(list('qwertyuioasdfghjklzxcvbnpm1234567890'), k=16))
-    password = "2244"  # Updated password
+    password = "hmmm"  # Updated password
     try:
         con = create_connection("wss://195.13.182.213/Auth",
                                 header={"app": "com.safeum.android", "host": None, "remoteIp": "195.13.182.213",
