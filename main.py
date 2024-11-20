@@ -65,7 +65,7 @@ while True:
     print('\n\n\n' + ' ' * 25 + 'Success : ' + str(success) + '\n\n\n' + ' ' * 25 + 'Failed : ' + str(
         failed) + '\n\n\n' + ' ' * 25 + 'ReTry : ' + str(retry))
     hh = str(failed) + str(success) + str(retry)
-    if int(success) >= 200:
+    if int(success) >= 2000:
         fuck()
         print("Created Acc successfully")
         
