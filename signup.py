@@ -4,7 +4,17 @@ import os
 from user_agent import generate_user_agent
 import pyfiglet
 import sys
-os.system('clear')
+def clear_screen():
+    """
+    Clears the terminal screen based on the operating system.
+    """
+    if os.name == 'nt':  # For Windows
+        os.system('cls')
+    else:  # For macOS and Linux
+        os.system('clear')
+
+# Example usage
+clear_screen()
 
 def to(s):
     for char in s + "\n":
@@ -76,4 +86,4 @@ while True:
         print("CREATED ACCOUNTS>>\n", z)
         
 
-    os.system('clear')
+    clear_screen()
