@@ -4,36 +4,28 @@ import os
 from user_agent import generate_user_agent
 import pyfiglet
 import sys
-def clear_screen():
-    """
-    Clears the terminal screen based on the operating system.
-    """
-    if os.name == 'nt':  # For Windows
-        os.system('cls')
-    else:  # For macOS and Linux
-        os.system('clear')
-
-# Example usage
-clear_screen()
-
-def to(s):
-    for char in s + "\n":
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(500.0 / 8000)
-
-
+import time
 from ssl import CERT_NONE
 from gzip import decompress
 from random import choice, choices
 from concurrent.futures import ThreadPoolExecutor
 from json import dumps
+from websocket import create_connection
 
-try:
-    from websocket import create_connection
-except:
-    system('pip install websocket-client')
-    from websocket import create_connection
+def clear_screen():
+    if os.name == 'nt': 
+        os.system('cls')
+    else:  
+        os.system('clear')
+
+
+
+def to(s):
+    for char in s + "\n":
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(1)
+
 
 failed = 0
 success = 0
@@ -44,7 +36,7 @@ accounts = []
 def work():
     global failed, success, retry
     username = choice('qwertyuiooasdfghjklzxcvpbnm') + ''.join(choices(list('qwertyuioasdfghjklzxcvbnpm1234567890'), k=16))
-    password = "hmmm"  # Updated password
+    password = "hmmm" 
     try:
         con = create_connection("wss://195.13.182.213/Auth",
                                 header={"app": "com.safeum.android", "host": None, "remoteIp": "195.13.182.213",
@@ -67,7 +59,7 @@ def work():
         retry += 1
 
 
-start = ThreadPoolExecutor(max_workers=1000)
+start = ThreadPoolExecutor(max_workers=10000)
 
 
 while True:
@@ -76,7 +68,6 @@ while True:
         failed) + '\n\n\n' + ' ' * 25 + 'ReTry : ' + str(retry))
     hh = str(failed) + str(success) + str(retry)
     if int(success) >= 2000:
-        fuck()
         print("Created Acc successfully")
         
     
